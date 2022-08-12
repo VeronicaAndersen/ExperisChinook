@@ -8,6 +8,7 @@ import java.util.List;
 public interface CrudRespository <T, ID> {
     List <T> findAll();
     Customer findById (ID id);
+    Customer findByName (String name);
     int insert (T object);
     int update (T object);
     int delete (T object);

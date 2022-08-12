@@ -4,6 +4,7 @@ import com.example.chinookjava.models.Customer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
+import javax.naming.Name;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -55,6 +56,30 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         try (Connection conn = DriverManager.getConnection(url, username, password)) {
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                customer = new Customer(
+                        resultSet.getInt("customer_id"),
+                        resultSet.getString("first_name"),
+                        resultSet.getString("last_name"),
+                        resultSet.getString("country"),
+                        resultSet.getString("postal_code"),
+                        resultSet.getString("phone"),
+                        resultSet.getString("email")
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return customer;
+    }
+    @Override
+    public Customer findByName(String name) {
+        Customer customer = null;
+        String sql = "SELECT * FROM customer WHERE first_name LIKE ?";
+        try (Connection conn = DriverManager.getConnection(url, username, password)) {
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setString(1, name);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 customer = new Customer(

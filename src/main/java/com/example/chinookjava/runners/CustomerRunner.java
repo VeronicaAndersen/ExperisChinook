@@ -28,5 +28,10 @@ public class CustomerRunner implements ApplicationRunner {
     System.out.println(customer.customer_id() + " " + customer.first_name() + " " +
             customer.last_name() + " " + customer.country() + " " +
             customer.postal_code() + " " + customer.phone() + " " + customer.email());
+
+    Customer customerName = customerRepository.findByName("Tim");
+    System.out.println(customerName.customer_id() + " " + customerName.first_name() + " " +
+            customerName.last_name() + " " + customerName.country() + " " +
+            customerName.postal_code() + " " + customerName.phone() + " " + customerName.email());
   }
 }
