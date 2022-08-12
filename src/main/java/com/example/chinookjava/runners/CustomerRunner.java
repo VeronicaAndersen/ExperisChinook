@@ -14,6 +14,12 @@ public class CustomerRunner implements ApplicationRunner {
   }
   @Override
   public void run(ApplicationArguments args) throws Exception{
+    System.out.println(customerRepository.findById(1).customer_id());
     System.out.println(customerRepository.findById(1).first_name());
+    System.out.println(customerRepository.findById(1).last_name());
+    System.out.println(customerRepository.findById(1).country());
+    System.out.println(customerRepository.findById(1).postal_code());
+    System.out.println(customerRepository.findById(1).phone());
+    System.out.println(customerRepository.findById(1).email());
   }
 }

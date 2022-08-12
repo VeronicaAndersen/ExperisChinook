@@ -39,17 +39,10 @@ public class CustomerRepositoryImpl implements CustomerRepository {
                         resultSet.getInt("customer_id"),
                         resultSet.getString("first_name"),
                         resultSet.getString("last_name"),
-                        resultSet.getString("company"),
-                        resultSet.getString("address"),
-                        resultSet.getString("city"),
-                        resultSet.getString("state"),
                         resultSet.getString("country"),
                         resultSet.getString("postal_code"),
                         resultSet.getString("phone"),
-                        resultSet.getString("fax"),
-                        resultSet.getString("email"),
-                        resultSet.getInt("support_rep_id")
-
+                        resultSet.getString("email")
                 );
             }
         }catch (SQLException e){
