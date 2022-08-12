@@ -2,6 +2,7 @@ package com.example.chinookjava.repository;
 
 import com.example.chinookjava.models.Customer;
 
+import javax.naming.Name;
 import java.util.List;
 
 public interface CrudRespository <T, ID> {
@@ -11,5 +12,4 @@ public interface CrudRespository <T, ID> {
     int update (T object);
     int delete (T object);
     int deleteByID (ID id);
-
 }

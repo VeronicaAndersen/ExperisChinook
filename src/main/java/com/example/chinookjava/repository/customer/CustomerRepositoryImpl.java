@@ -50,7 +50,6 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         }
         return customer;
     }
-
     @Override
     public int insert(Customer object) {
         return 0;
