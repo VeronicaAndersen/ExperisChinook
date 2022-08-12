@@ -20,8 +20,11 @@ public class CustomerRunner implements ApplicationRunner {
   @Override
   public void run(ApplicationArguments args) throws Exception {
     /*Prints out all costumers*/
-    List<Customer> customerList = customerRepository.findAll(2, 12);
+
+    List<Customer> customerList = customerRepository.findAll();
     System.out.println(customerList);
+    List<Customer> customerListLimit = customerRepository.findAll(2, 12);
+    System.out.println(customerListLimit);
 
     /*Prints out costumer with id = 1*/
     Customer customer = customerRepository.findById(1);
@@ -33,5 +36,8 @@ public class CustomerRunner implements ApplicationRunner {
     System.out.println(customerName.customer_id() + " " + customerName.first_name() + " " +
             customerName.last_name() + " " + customerName.country() + " " +
             customerName.postal_code() + " " + customerName.phone() + " " + customerName.email());
+
+
+
   }
 }
