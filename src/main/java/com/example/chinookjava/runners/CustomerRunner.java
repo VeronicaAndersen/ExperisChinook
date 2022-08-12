@@ -26,11 +26,6 @@ public class CustomerRunner implements ApplicationRunner {
     List<Customer> customerListLimit = customerRepository.findAll(2, 12);
     System.out.println(customerListLimit);
 
-    /*Prints out costumer with id = 1*/
-    Customer customer = customerRepository.findById(1);
-    System.out.println(customer.customer_id() + " " + customer.first_name() + " " +
-            customer.last_name() + " " + customer.country() + " " +
-            customer.postal_code() + " " + customer.phone() + " " + customer.email());
 
 
 
@@ -40,5 +35,15 @@ public class CustomerRunner implements ApplicationRunner {
     System.out.println(customerName.customer_id() + " " + customerName.first_name() + " " +
             customerName.last_name() + " " + customerName.country() + " " +
             customerName.postal_code() + " " + customerName.phone() + " " + customerName.email());
+
+    customerRepository.update(new Customer(2, "Oliver", "Dahlqvist", "Sweden", "54144", "224256-2343", "oliver@dalhqvist.com"));
+
+
+    /*Prints out costumer with id = 1*/
+    Customer customer = customerRepository.findById(2);
+    System.out.println(customer.customer_id() + " " + customer.first_name() + " " +
+            customer.last_name() + " " + customer.country() + " " +
+            customer.postal_code() + " " + customer.phone() + " " + customer.email());
+
   }
 }
