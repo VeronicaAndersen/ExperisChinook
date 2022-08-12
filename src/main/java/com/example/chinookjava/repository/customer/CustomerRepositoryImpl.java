@@ -24,12 +24,14 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     }
 
     @Override
-    public List<Customer> findAll() {
+    public List<Customer> findAll(int rowLimit, int offsetLimit) {
         Customer customer = null;
         List <Customer> customerList = new ArrayList<>();
-        String sql = "SELECT * FROM customer ";
+        String sql = "SELECT * FROM customer LIMIT ? OFFSET ?";
         try (Connection conn = DriverManager.getConnection(url, username, password)) {
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(1, rowLimit);
+            preparedStatement.setInt(2, offsetLimit);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 customer = new Customer(

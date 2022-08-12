@@ -20,7 +20,7 @@ public class CustomerRunner implements ApplicationRunner {
   @Override
   public void run(ApplicationArguments args) throws Exception {
     /*Prints out all costumers*/
-    List<Customer> customerList = customerRepository.findAll();
+    List<Customer> customerList = customerRepository.findAll(2, 12);
     System.out.println(customerList);
 
     /*Prints out costumer with id = 1*/

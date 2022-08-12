@@ -6,7 +6,7 @@ import javax.naming.Name;
 import java.util.List;
 
 public interface CrudRespository <T, ID> {
-    List <T> findAll();
+    List <T> findAll(int rowLimit, int offsetLimit);
     Customer findById (ID id);
     Customer findByName (String name);
     int insert (T object);
