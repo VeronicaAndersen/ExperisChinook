@@ -29,17 +29,16 @@ public class CustomerRunner implements ApplicationRunner {
 
 
 
-    customerRepository.insert(new Customer(0, "Adrian", "Mattsson", "Sweden", "54134", "824674-23423", "adrian@mattsson.com"));
+//    customerRepository.insert(new Customer(0, "Adrian", "Mattsson", "Sweden", "54134", "824674-23423", "adrian@mattsson.com"));
 
     Customer customerName = customerRepository.findByName("Adrian");
     System.out.println(customerName.customer_id() + " " + customerName.first_name() + " " +
             customerName.last_name() + " " + customerName.country() + " " +
             customerName.postal_code() + " " + customerName.phone() + " " + customerName.email());
 
-    customerRepository.update(new Customer(2, "Oliver", "Dahlqvist", "Sweden", "54144", "224256-2343", "oliver@dalhqvist.com"));
+    customerRepository.update(new Customer(2, "Sona", "Dahlqvist", "Sweden", "54144", "224256-2343", "oliver@dalhqvist.com"));
 
 
-    /*Prints out costumer with id = 1*/
     Customer customer = customerRepository.findById(2);
     System.out.println(customer.customer_id() + " " + customer.first_name() + " " +
             customer.last_name() + " " + customer.country() + " " +

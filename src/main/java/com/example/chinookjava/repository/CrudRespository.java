@@ -12,7 +12,7 @@ public interface CrudRespository <T, ID> {
     Customer findById (ID id);
     Customer findByName (String name);
     void insert (T object);
-    void update (T object);
+    int update (T object);
     int delete (T object);
     int deleteByID (ID id);
 }
