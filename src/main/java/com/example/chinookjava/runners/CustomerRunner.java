@@ -40,6 +40,12 @@ public class CustomerRunner implements ApplicationRunner {
 		System.out.println("\n_______________________Find customer by name._______________________");
 		Customer customerName = customerRepository.findByName("Adrian");
 		System.out.println("\n" + customerName.getCustomerInformation());
+		
+		/*Prints out country with most customers*/
+		System.out.println("\n_______________________Find country with most customers._______________________");
+		System.out.println(customerRepository.countCountry());
+		
+		
 
 	}
 }
