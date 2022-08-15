@@ -13,6 +13,7 @@ public interface CrudRespository <T, ID> {
     Customer findByName (String name);
     void insert (T object);
     int update (T object);
+    String countCountry();
     int delete (T object);
     int deleteByID (ID id);
 }

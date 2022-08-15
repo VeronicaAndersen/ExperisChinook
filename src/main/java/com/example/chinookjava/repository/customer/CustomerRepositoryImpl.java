@@ -167,6 +167,27 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 		}
 		return rowAffected;
 	}
+	
+	@Override
+	public String countCountry() {
+		String country = "";
+		String sql = "SELECT MAX(country) FROM customer";
+		
+		try (Connection conn = DriverManager.getConnection(url, username, password)) {
+			PreparedStatement preparedStatement = conn.prepareStatement(sql);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			while (resultSet.next()) {
+                country = resultSet.getString("max");
+            }
+            preparedStatement.close();
+
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return country;
+	}
 
 	@Override
 	public int delete(Customer object) {
