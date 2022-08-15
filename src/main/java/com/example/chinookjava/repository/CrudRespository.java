@@ -14,6 +14,7 @@ public interface CrudRespository <T, ID> {
     void insert (T object);
     int update (T object);
     String countCountry();
+    Customer highestSpender();
     int delete (T object);
     int deleteByID (ID id);
 }
