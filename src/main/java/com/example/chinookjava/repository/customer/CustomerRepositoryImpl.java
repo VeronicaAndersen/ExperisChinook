@@ -1,6 +1,8 @@
 package com.example.chinookjava.repository.customer;
 
 import com.example.chinookjava.models.Customer;
+import com.example.chinookjava.models.CustomerCountry;
+import com.example.chinookjava.models.CustomerSpender;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
@@ -185,15 +187,16 @@ phone number and email. Whit limit & offsets*/
 
   /* 7. Return the country with the most customers.*/
   @Override
-  public String countCountry() {
-    String country = "";
+  public CustomerCountry countCountry() {
+    CustomerCountry country = null;
     String sql = "SELECT MAX(country) FROM customer";
 
     try (Connection conn = DriverManager.getConnection(url, username, password)) {
       preparedStatement = conn.prepareStatement(sql);
       ResultSet resultSet = preparedStatement.executeQuery();
       while (resultSet.next()) {
-        country = resultSet.getString("max");
+        country = new CustomerCountry(
+                resultSet.getString("max"));
       }
       preparedStatement.close();
     } catch (SQLException e) {
@@ -204,8 +207,8 @@ phone number and email. Whit limit & offsets*/
 
   /* 8. Customer who is the highest spender (total in invoice table is the largest).*/
   @Override
-  public Customer highestSpender() {
-    Customer customer = null;
+  public CustomerSpender highestSpender() {
+    CustomerSpender spender = null;
     String sql = "SELECT invoice.invoice_id, customer.first_name, invoice.total, customer.customer_id, customer.last_name, customer.country, customer.postal_code, customer.phone, customer.email" +
             "\tFROM invoice\n" +
             "\tINNER JOIN customer\n" +
@@ -217,21 +220,17 @@ phone number and email. Whit limit & offsets*/
       ResultSet resultSet = preparedStatement.executeQuery();
 
       while (resultSet.next()) {
-        customer = new Customer(
+        spender = new CustomerSpender(
                 resultSet.getInt("customer_id"),
                 resultSet.getString("first_name"),
-                resultSet.getString("last_name"),
-                resultSet.getString("country"),
-                resultSet.getString("postal_code"),
-                resultSet.getString("phone"),
-                resultSet.getString("email")
+                resultSet.getString("last_name")
         );
       }
       preparedStatement.close();
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    return customer;
+    return spender;
 
   }
 

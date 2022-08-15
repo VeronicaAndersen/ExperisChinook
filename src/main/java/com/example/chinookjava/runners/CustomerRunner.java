@@ -1,6 +1,8 @@
 package com.example.chinookjava.runners;
 
 import com.example.chinookjava.models.Customer;
+import com.example.chinookjava.models.CustomerCountry;
+import com.example.chinookjava.models.CustomerSpender;
 import com.example.chinookjava.repository.customer.CustomerRepository;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -41,11 +43,12 @@ public class CustomerRunner implements ApplicationRunner {
 
     /*Prints out country with most customers*/
     System.out.println("\n_______________________ Find country with most customers. _______________________");
-    System.out.println(customerRepository.countCountry());
+    CustomerCountry mostCustomersCountry = customerRepository.countCountry();
+    System.out.println(mostCustomersCountry.getCountry());
 
     /*Prints out customer with the highest spender total on invoices.*/
     System.out.println("\n_______________________ Find customer that spends most._______________________");
-    Customer customerSpender = customerRepository.highestSpender();
-    System.out.println(customerSpender.getCustomerInformation());
+    CustomerSpender customerSpender = customerRepository.highestSpender();
+    System.out.println(customerSpender.getCustomerSpender());
   }
 }

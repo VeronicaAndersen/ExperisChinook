@@ -1,6 +1,8 @@
 package com.example.chinookjava.repository;
 
 import com.example.chinookjava.models.Customer;
+import com.example.chinookjava.models.CustomerCountry;
+import com.example.chinookjava.models.CustomerSpender;
 
 import javax.naming.Name;
 import java.util.List;
@@ -13,8 +15,8 @@ public interface CrudRespository <T, ID> {
     Customer findByName (String name);
     void insert (T object);
     int update (T object);
-    String countCountry();
-    Customer highestSpender();
+    CustomerCountry countCountry();
+    CustomerSpender highestSpender();
     int delete (T object);
     int deleteByID (ID id);
 }
