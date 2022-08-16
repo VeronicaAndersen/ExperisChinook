@@ -278,14 +278,4 @@ means the genre that corresponds to the most tracks from invoices associated to 
     }
     return genre;
   }
-
-  @Override
-  public int delete(Customer object) {
-    return 0;
-  }
-
-  @Override
-  public int deleteByID(Integer integer) {
-    return 0;
-  }
 }
