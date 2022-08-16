@@ -51,17 +51,17 @@ public class CustomerRunner implements ApplicationRunner {
     /*07. Prints out country with most customers*/
     System.out.println("\n_______________________ Find country with most customers. _______________________");
     CustomerCountry mostCustomersCountry = customerRepository.countCountry();
-    System.out.println(mostCustomersCountry.getCountry());
+    System.out.println(mostCustomersCountry.findCountryWithMostCustomers());
 
     /*08. Prints out customer with the highest spender total on invoices.*/
     System.out.println("\n_______________________ Find customer that spends most. _______________________");
     CustomerSpender customerSpender = customerRepository.highestSpender();
-    System.out.println(customerSpender.getCustomerSpender());
+    System.out.println(customerSpender.findHighestSpender());
 
     /*09. Prints out the greatest genre for the specific customer.*/
     System.out.println("\n_______________________ Find customer greatest genre. _______________________");
     List <CustomerGenre> genreList = customerRepository.getPopularGenre(customerRepository.findById(12));
-    genreList.forEach(genre -> System.out.println(genre.getCustomerGenre()));
+    genreList.forEach(genre -> System.out.println(genre.findCustomersGreatestGenre()));
 
   }
 }

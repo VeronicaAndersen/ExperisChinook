@@ -240,7 +240,6 @@ phone number and email. Whit limit & offsets*/
       e.printStackTrace();
     }
     return spender;
-
   }
 /*For a given customer, their most popular genre (in the case of a tie, display both). Most popular in this context
 means the genre that corresponds to the most tracks from invoices associated to that customer.*/
@@ -274,7 +273,6 @@ means the genre that corresponds to the most tracks from invoices associated to 
       e.printStackTrace();
     }
     return genre;
-
   }
 
   @Override
