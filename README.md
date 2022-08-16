@@ -1,5 +1,5 @@
 # Java Assignment 2 - Superhero database & Chinook database
-First part of the project creates scripts thats located in the folder Scripts.
+First part of the project creates scripts that's located in the folder Scripts. The script folder contains superheros, assistants & superpowers with relations to each other. 
 Second part was build with Spring Boot in Java. This part is a Java application that reads & manipulating data with JDBC. This part is like a re-make of iTunes called Chinnook. 
 
 ## Installation 
