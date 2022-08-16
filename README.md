@@ -11,7 +11,7 @@ git clone git@gitlab.com:VeronicaAndersen/java-2-chinook.git
 ```
 
 ### IDE software
-To run and use this repository you can use a software that you like. This one was build in IntelliJ IDEA.
+To run and use this repository you can use a software that you like. This one was build in IntelliJ IDEA and are using spring boot with plugin Gradle.
 The scripts were created in PostgreSQL with pgAdmin 4.
 
 ## Setting up database connection

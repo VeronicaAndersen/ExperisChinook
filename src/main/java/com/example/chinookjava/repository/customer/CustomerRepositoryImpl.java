@@ -249,7 +249,7 @@ means the genre that corresponds to the most tracks from invoices associated to 
   public List<CustomerGenre> customerGreatestGenre(Customer customer) {
     List<CustomerGenre> genre = new ArrayList<>();
 
-    String sql = "SELECT genre.genre_id, genre.name\n" +
+    String sql = "SELECT genre.genre_id, genre.name , COUNT(genre.genre_id)" +
             "    FROM customer " +
             "        INNER JOIN invoice ON customer.customer_id = invoice.customer_id" +
             "        INNER JOIN invoice_line ON invoice.invoice_id = invoice_line.invoice_id" +
@@ -267,7 +267,9 @@ means the genre that corresponds to the most tracks from invoices associated to 
       while (resultSet.next()) {
         genre.add( new CustomerGenre(
                 resultSet.getInt("genre_id"),
-                resultSet.getString("name"))
+                resultSet.getString("name"),
+                resultSet.getInt("count")
+                )
         );
       }
       preparedStatement.close();
