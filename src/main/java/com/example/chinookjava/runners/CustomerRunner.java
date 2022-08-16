@@ -24,22 +24,22 @@ public class CustomerRunner implements ApplicationRunner {
 
     /*01. Prints out all customers.*/
     System.out.println("\n_______________________ Find all customers. _______________________");
-    List<Customer> customerList = customerRepository.findAll();
+    List<Customer> customerList = customerRepository.findAllCustomers();
     customerList.forEach(customer -> System.out.println(customer.getCustomerInformation()));
 
     /*02. Prints out customer by id*/
     System.out.println("\n_______________________ Find customer by id. _______________________");
-    Customer customerId = customerRepository.findById(2);
+    Customer customerId = customerRepository.findCustomerById(2);
     System.out.println("\n" + customerId.getCustomerInformation());
 
     /*03. Prints out customer by first name*/
     System.out.println("\n_______________________ Find customer by name. _______________________");
-    Customer customerName = customerRepository.findByName("Adrian");
+    Customer customerName = customerRepository.findCustomerByName("Adrian");
     System.out.println("\n" + customerName.getCustomerInformation());
 
     /*04. Prints out all customers with limit & offset.*/
     System.out.println("\n_______________________ Find all customers with limits & offsets. _______________________");
-    List<Customer> customerListLimit = customerRepository.findAll(2, 12);
+    List<Customer> customerListLimit = customerRepository.findAllCustomers(2, 12);
     customerListLimit.forEach(customer -> System.out.println(customer.getCustomerInformation()));
 
     /* 05. Insert a new customer.*/
@@ -50,17 +50,17 @@ public class CustomerRunner implements ApplicationRunner {
 
     /*07. Prints out country with most customers*/
     System.out.println("\n_______________________ Find country with most customers. _______________________");
-    CustomerCountry mostCustomersCountry = customerRepository.countCountry();
+    CustomerCountry mostCustomersCountry = customerRepository.countryWithMostCustomers();
     System.out.println(mostCustomersCountry.findCountryWithMostCustomers());
 
     /*08. Prints out customer with the highest spender total on invoices.*/
     System.out.println("\n_______________________ Find customer that spends most. _______________________");
-    CustomerSpender customerSpender = customerRepository.highestSpender();
+    CustomerSpender customerSpender = customerRepository.customerThatSpendsMost();
     System.out.println(customerSpender.findHighestSpender());
 
     /*09. Prints out the greatest genre for the specific customer.*/
     System.out.println("\n_______________________ Find customer greatest genre. _______________________");
-    List <CustomerGenre> genreList = customerRepository.getPopularGenre(customerRepository.findById(12));
+    List <CustomerGenre> genreList = customerRepository.customerGreatestGenre(customerRepository.findCustomerById(12));
     genreList.forEach(genre -> System.out.println(genre.findCustomersGreatestGenre()));
 
   }

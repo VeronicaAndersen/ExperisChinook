@@ -8,16 +8,16 @@ import com.example.chinookjava.models.CustomerSpender;
 import java.util.List;
 
 public interface CrudRespository <T, ID> {
-    List <T> findAll();
-    List <T> findAll(int rowLimit, int offsetLimit);
+    List <T> findAllCustomers();
+    List <T> findAllCustomers(int rowLimit, int offsetLimit);
 
-    Customer findById (ID id);
-    Customer findByName (String name);
-    void insert (T object);
-    int update (T object);
-    CustomerCountry countCountry();
-    CustomerSpender highestSpender();
-    List <CustomerGenre> getPopularGenre(T object);
+    Customer findCustomerById(ID id);
+    Customer findCustomerByName(String name);
+    void insertCustomer(T object);
+    int updateCustomer(T object);
+    CustomerCountry countryWithMostCustomers();
+    CustomerSpender customerThatSpendsMost();
+    List <CustomerGenre> customerGreatestGenre(T object);
     int delete (T object);
     int deleteByID (ID id);
 }

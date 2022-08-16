@@ -31,7 +31,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
   /* 1. Read all the customers in the database, this display their: Id, first name, last name, country, postal code,
   phone number and email.*/
   @Override
-  public List<Customer> findAll() {
+  public List<Customer> findAllCustomers() {
     Customer customer = null;
     List<Customer> customerList = new ArrayList<>();
     String sql = "SELECT * FROM customer ORDER BY customer_id ASC";
@@ -60,7 +60,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
   /* 4. Read all the customers in the database, this display their: Id, first name, last name, country, postal code,
 phone number and email. Whit limit & offsets*/
   @Override
-  public List<Customer> findAll(int rowLimit, int offsetLimit) {
+  public List<Customer> findAllCustomers(int rowLimit, int offsetLimit) {
     Customer customer = null;
     List<Customer> customerList = new ArrayList<>();
     String sql = "SELECT * FROM customer LIMIT ? OFFSET ?";
@@ -90,7 +90,7 @@ phone number and email. Whit limit & offsets*/
   /* 2. Read a specific customer from the database (by Id), this display their: Id, first name, last name, country, postal code,
   phone number and email.*/
   @Override
-  public Customer findById(Integer id) {
+  public Customer findCustomerById(Integer id) {
     Customer customer = null;
     String sql = "SELECT * FROM customer WHERE customer_id = ?";
     try (Connection conn = DriverManager.getConnection(url, username, password)) {
@@ -116,7 +116,7 @@ phone number and email. Whit limit & offsets*/
 
   /* 3. Read a specific customer by name.*/
   @Override
-  public Customer findByName(String name) {
+  public Customer findCustomerByName(String name) {
     Customer customer = null;
     String sql = "SELECT * FROM customer WHERE first_name LIKE ? ORDER BY customer_id ASC";
     try (Connection conn = DriverManager.getConnection(url, username, password)) {
@@ -142,7 +142,7 @@ phone number and email. Whit limit & offsets*/
 
   /* 5. Add a new customer to the database.*/
   @Override
-  public void insert(Customer customer) {
+  public void insertCustomer(Customer customer) {
     String sql = "INSERT INTO customer (first_name, last_name, country, postal_code, phone, email) VALUES (?,?,?,?,?,?)";
 
     try (Connection conn = DriverManager.getConnection(url, username, password)) {
@@ -161,7 +161,7 @@ phone number and email. Whit limit & offsets*/
 
   /* 6. Update an existing customer. */
   @Override
-  public int update(Customer customer) {
+  public int updateCustomer(Customer customer) {
     String sql = "UPDATE customer SET first_name = ?, " +
             "last_name = ?, " +
             "country = ?, " +
@@ -188,7 +188,7 @@ phone number and email. Whit limit & offsets*/
 
   /* 7. Return the country with the most customers.*/
   @Override
-  public CustomerCountry countCountry() {
+  public CustomerCountry countryWithMostCustomers() {
     CustomerCountry country = null;
     String sql = "SELECT MAX(country) FROM customer";
 
@@ -208,7 +208,7 @@ phone number and email. Whit limit & offsets*/
 
   /* 8. Customer who is the highest spender (total in invoice table is the largest).*/
   @Override
-  public CustomerSpender highestSpender() {
+  public CustomerSpender customerThatSpendsMost() {
     CustomerSpender spender = null;
     String sql = "SELECT invoice.invoice_id, " +
             "customer.first_name, " +
@@ -244,7 +244,7 @@ phone number and email. Whit limit & offsets*/
 /*For a given customer, their most popular genre (in the case of a tie, display both). Most popular in this context
 means the genre that corresponds to the most tracks from invoices associated to that customer.*/
   @Override
-  public List<CustomerGenre> getPopularGenre(Customer customer) {
+  public List<CustomerGenre> customerGreatestGenre(Customer customer) {
     List<CustomerGenre> genre = new ArrayList<>();
 
     String sql = "SELECT genre.genre_id, genre.name\n" +
