@@ -34,8 +34,9 @@ public class CustomerRunner implements ApplicationRunner {
 
     /*03. Prints out customer by first name*/
     System.out.println("\n_______________________ Find customer by name. _______________________");
-    Customer customerName = customerRepository.findCustomerByName("Adrian");
-    System.out.println("\n" + customerName.getCustomerInformation());
+    List <Customer> customerName = customerRepository.findCustomerByName("Adrian");
+//    System.out.println("\n" + customerName.getCustomerInformation());
+    customerName.forEach(customer -> System.out.println(customer.getCustomerInformation()));
 
     /*04. Prints out all customers with limit & offset.*/
     System.out.println("\n_______________________ Find all customers with limits & offsets. _______________________");

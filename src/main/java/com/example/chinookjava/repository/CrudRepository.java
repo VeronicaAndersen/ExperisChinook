@@ -36,7 +36,7 @@ public interface CrudRepository<T, ID> {
      * @param name the object to query for.
      * @return Customer by name otherwise throw error.
      */
-    Customer findCustomerByName(String name);
+    List <T> findCustomerByName(String name);
 
     /**
      * Creates a new object.

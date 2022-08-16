@@ -116,8 +116,9 @@ phone number and email. Whit limit & offsets*/
 
   /* 3. Read a specific customer by name.*/
   @Override
-  public Customer findCustomerByName(String name) {
+  public List <Customer> findCustomerByName(String name) {
     Customer customer = null;
+    List<Customer> customerList = new ArrayList<>();
     String sql = "SELECT * FROM customer WHERE first_name LIKE ? ORDER BY customer_id ASC";
     try (Connection conn = DriverManager.getConnection(url, username, password)) {
       preparedStatement = conn.prepareStatement(sql);
@@ -133,11 +134,12 @@ phone number and email. Whit limit & offsets*/
                 resultSet.getString("phone"),
                 resultSet.getString("email")
         );
+        customerList.add(customer);
       }
     } catch (SQLException e) {
       e.printStackTrace();
     }
-    return customer;
+    return customerList;
   }
 
   /* 5. Add a new customer to the database.*/
