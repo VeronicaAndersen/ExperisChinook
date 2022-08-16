@@ -14,6 +14,13 @@ git clone git@gitlab.com:VeronicaAndersen/java-2-chinook.git
 To run and use this repository you can use a software that you like. This one was build in IntelliJ IDEA.
 The scripts were created in PostgreSQL with pgAdmin 4.
 
+## Setting up database connection
+In the file located in src/main/resources/application.properties enter the following:
+```
+spring.datasource.url= jdbc:postgresql://localhost:5432/<NameOfYourDatabase>
+spring.datasource.username= <UsernameForDatabase>
+spring.datasource.password= <PasswordForDatabase>
+```
 
 ## Contributors
 Huwaida Alhamdawee @Huwaida-al & Veronica Andersen @VeronicaAndersen
