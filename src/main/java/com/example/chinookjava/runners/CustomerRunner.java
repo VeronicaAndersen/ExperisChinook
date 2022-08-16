@@ -43,10 +43,10 @@ public class CustomerRunner implements ApplicationRunner {
     customerListLimit.forEach(customer -> System.out.println(customer.getCustomerInformation()));
 
     /* 05. Insert a new customer.*/
-//		customerRepository.insert(new Customer(0, "Adrian", "Mattsson", "Sweden", "54134", "824674-23423", "adrian@mattsson.com"));
+//    customerRepository.insertCustomer(new Customer(0, "Adrian", "Mattsson", "Sweden", "54134", "824674-23423", "adrian@mattsson.com"));
 
     /* 06. Update an existing customer*/
-//		customerRepository.update(new Customer(2, "Oliver", "Dahlqvist", "Sweden", "54144", "224256-2343", "oliver@dalhqvist.com"));
+//    customerRepository.updateCustomer(new Customer(2, "Oliver", "Dahlqvist", "Sweden", "54144", "224256-2343", "oliver@dalhqvist.com"));
 
     /*07. Prints out country with most customers*/
     System.out.println("\n_______________________ Find country with most customers. _______________________");
