@@ -1,8 +1,8 @@
 package com.example.chinookjava.repository.customer;
 
 import com.example.chinookjava.models.Customer;
-import com.example.chinookjava.repository.CrudRespository;
+import com.example.chinookjava.repository.CrudRepository;
 
-public interface CustomerRepository extends CrudRespository <Customer, Integer> {
+public interface CustomerRepository extends CrudRepository<Customer, Integer> {
 
 }
