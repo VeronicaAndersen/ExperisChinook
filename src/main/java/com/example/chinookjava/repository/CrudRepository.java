@@ -69,18 +69,4 @@ public interface CrudRepository<T, ID> {
      * @return top 1 genre for specific customer.
      */
     List <CustomerGenre> customerGreatestGenre(T object);
-
-    /**
-     * Deletes object.
-     * @param object the type to query for.
-     * @return Deletes object.
-     */
-    int delete (T object);
-
-    /**
-     * Deletes customer.
-     * @param id the type to query for.
-     * @return deletes customer based on id.
-     */
-    int deleteByID (ID id);
 }
