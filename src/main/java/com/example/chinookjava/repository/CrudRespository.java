@@ -2,9 +2,9 @@ package com.example.chinookjava.repository;
 
 import com.example.chinookjava.models.Customer;
 import com.example.chinookjava.models.CustomerCountry;
+import com.example.chinookjava.models.CustomerGenre;
 import com.example.chinookjava.models.CustomerSpender;
 
-import javax.naming.Name;
 import java.util.List;
 
 public interface CrudRespository <T, ID> {
@@ -17,6 +17,7 @@ public interface CrudRespository <T, ID> {
     int update (T object);
     CustomerCountry countCountry();
     CustomerSpender highestSpender();
+    List <CustomerGenre> getPopularGenre(T object);
     int delete (T object);
     int deleteByID (ID id);
 }

@@ -2,6 +2,7 @@ package com.example.chinookjava.runners;
 
 import com.example.chinookjava.models.Customer;
 import com.example.chinookjava.models.CustomerCountry;
+import com.example.chinookjava.models.CustomerGenre;
 import com.example.chinookjava.models.CustomerSpender;
 import com.example.chinookjava.repository.customer.CustomerRepository;
 import org.springframework.boot.ApplicationArguments;
@@ -20,35 +21,47 @@ public class CustomerRunner implements ApplicationRunner {
 
   @Override
   public void run(ApplicationArguments args) throws Exception {
-    /*Insert a new customer.*/
-//		customerRepository.insert(new Customer(0, "Adrian", "Mattsson", "Sweden", "54134", "824674-23423", "adrian@mattsson.com"));
 
-    /*Update an existing customer*/
-//		customerRepository.update(new Customer(2, "Oliver", "Dahlqvist", "Sweden", "54144", "224256-2343", "oliver@dalhqvist.com"));
-
-    /*Prints out all customers.*/
+    /*01. Prints out all customers.*/
     System.out.println("\n_______________________ Find all customers. _______________________");
     List<Customer> customerList = customerRepository.findAll();
     customerList.forEach(customer -> System.out.println(customer.getCustomerInformation()));
 
-    /*Prints out all customers with limit & offset.*/
-    System.out.println("\n_______________________ Find all customers with limits & offsets. _______________________");
-    List<Customer> customerListLimit = customerRepository.findAll(2, 12);
-    customerListLimit.forEach(customer -> System.out.println(customer.getCustomerInformation()));
+    /*02. Prints out customer by id*/
+    System.out.println("\n_______________________ Find customer by id. _______________________");
+    Customer customerId = customerRepository.findById(2);
+    System.out.println("\n" + customerId.getCustomerInformation());
 
-    /*Prints out customer by first name*/
+    /*03. Prints out customer by first name*/
     System.out.println("\n_______________________ Find customer by name. _______________________");
     Customer customerName = customerRepository.findByName("Adrian");
     System.out.println("\n" + customerName.getCustomerInformation());
 
-    /*Prints out country with most customers*/
+    /*04. Prints out all customers with limit & offset.*/
+    System.out.println("\n_______________________ Find all customers with limits & offsets. _______________________");
+    List<Customer> customerListLimit = customerRepository.findAll(2, 12);
+    customerListLimit.forEach(customer -> System.out.println(customer.getCustomerInformation()));
+
+    /* 05. Insert a new customer.*/
+//		customerRepository.insert(new Customer(0, "Adrian", "Mattsson", "Sweden", "54134", "824674-23423", "adrian@mattsson.com"));
+
+    /* 06. Update an existing customer*/
+//		customerRepository.update(new Customer(2, "Oliver", "Dahlqvist", "Sweden", "54144", "224256-2343", "oliver@dalhqvist.com"));
+
+    /*07. Prints out country with most customers*/
     System.out.println("\n_______________________ Find country with most customers. _______________________");
     CustomerCountry mostCustomersCountry = customerRepository.countCountry();
     System.out.println(mostCustomersCountry.getCountry());
 
-    /*Prints out customer with the highest spender total on invoices.*/
-    System.out.println("\n_______________________ Find customer that spends most._______________________");
+    /*08. Prints out customer with the highest spender total on invoices.*/
+    System.out.println("\n_______________________ Find customer that spends most. _______________________");
     CustomerSpender customerSpender = customerRepository.highestSpender();
     System.out.println(customerSpender.getCustomerSpender());
+
+    /*09. Prints out the greatest genre for the specific customer.*/
+    System.out.println("\n_______________________ Find customer greatest genre. _______________________");
+    List <CustomerGenre> genreList = customerRepository.getPopularGenre(customerRepository.findById(12));
+    genreList.forEach(genre -> System.out.println(genre.getCustomerGenre()));
+
   }
 }
