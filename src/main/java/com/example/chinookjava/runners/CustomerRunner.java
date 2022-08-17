@@ -35,7 +35,6 @@ public class CustomerRunner implements ApplicationRunner {
     /*03. Prints out customer by first name*/
     System.out.println("\n_______________________ Find customer by name. _______________________");
     List <Customer> customerName = customerRepository.findCustomerByName("Adrian");
-//    System.out.println("\n" + customerName.getCustomerInformation());
     customerName.forEach(customer -> System.out.println(customer.getCustomerInformation()));
 
     /*04. Prints out all customers with limit & offset.*/
@@ -44,7 +43,7 @@ public class CustomerRunner implements ApplicationRunner {
     customerListLimit.forEach(customer -> System.out.println(customer.getCustomerInformation()));
 
     /* 05. Insert a new customer.*/
-//    customerRepository.insertCustomer(new Customer(0, "Adrian", "Mattsson", "Sweden", "54134", "824674-23423", "adrian@mattsson.com"));
+    customerRepository.insertCustomer(new Customer(0, "Adrian", "Mattsson", "Sweden", "54134", "824674-23423", "adrian@mattsson.com"));
 
     /* 06. Update an existing customer*/
     customerRepository.updateCustomer(new Customer(2, "Oliver", "Dahlqvist", "Sweden", "54144", "224256-2343", "oliver@dalhqvist.com"));
@@ -63,6 +62,5 @@ public class CustomerRunner implements ApplicationRunner {
     System.out.println("\n_______________________ Find customer greatest genre. _______________________");
     List <CustomerGenre> genreList = customerRepository.customerGreatestGenre(customerRepository.findCustomerById(12));
     genreList.forEach(genre -> System.out.println(genre.findCustomersGreatestGenre()));
-
   }
 }
