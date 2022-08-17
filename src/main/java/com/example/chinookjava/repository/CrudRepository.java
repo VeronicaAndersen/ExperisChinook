@@ -14,42 +14,42 @@ import java.util.List;
  */
 public interface CrudRepository<T, ID> {
     /**
-     * Find all customers that´s connected to the database.
+     * Find all types that´s connected to the database.
      * @return List with all customers.
      */
-    List <T> findAllCustomers();
+    List <T> findAll();
     /**
-     * Find all customers that´s connected to the database with limits & offsets.
+     * Find all types that´s connected to the database with limits & offsets.
      * @return List with all customers.
      */
-    List <T> findAllCustomers(int rowLimit, int offsetLimit);
+    List <T> findAll(int rowLimit, int offsetLimit);
 
     /**
-     * Finds customer based on primary key id.
+     * Finds type based on primary key id.
      * @param id primary key to query for.
      * @return Customer with specified id otherwise throw error.
      */
-    Customer findCustomerById(ID id);
+    Customer findById(ID id);
 
     /**
-     * Finds object based on name.
+     * Finds type based on name.
      * @param name the object to query for.
      * @return Customer by name otherwise throw error.
      */
-    List <T> findCustomerByName(String name);
+    List <T> findByName(String name);
 
     /**
-     * Creates a new object.
+     * Creates a new type.
      * @param object the type to query for.
      */
-    void insertCustomer(T object);
+    void insert(T object);
 
     /**
      * Updates an already existing object.
      * @param object the type to query for.
      * @return updates customer otherwise throws error.
      */
-    int updateCustomer(T object);
+    int update(T object);
 
     /**
      * Finds country with most customers.

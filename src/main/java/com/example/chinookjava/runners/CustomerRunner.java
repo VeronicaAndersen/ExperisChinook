@@ -20,33 +20,33 @@ public class CustomerRunner implements ApplicationRunner {
   }
 
   @Override
-  public void run(ApplicationArguments args) throws Exception {
+  public void run(ApplicationArguments args)  {
 
     /*01. Prints out all customers.*/
     System.out.println("\n_______________________ Find all customers. _______________________");
-    List<Customer> customerList = customerRepository.findAllCustomers();
+    List<Customer> customerList = customerRepository.findAll();
     customerList.forEach(customer -> System.out.println(customer.getCustomerInformation()));
 
     /*02. Prints out customer by id*/
     System.out.println("\n_______________________ Find customer by id. _______________________");
-    Customer customerId = customerRepository.findCustomerById(2);
+    Customer customerId = customerRepository.findById(2);
     System.out.println("\n" + customerId.getCustomerInformation());
 
     /*03. Prints out customer by first name*/
     System.out.println("\n_______________________ Find customer by name. _______________________");
-    List <Customer> customerName = customerRepository.findCustomerByName("Adrian");
+    List <Customer> customerName = customerRepository.findByName("Adrian");
     customerName.forEach(customer -> System.out.println(customer.getCustomerInformation()));
 
     /*04. Prints out all customers with limit & offset.*/
     System.out.println("\n_______________________ Find all customers with limits & offsets. _______________________");
-    List<Customer> customerListLimit = customerRepository.findAllCustomers(2, 12);
+    List<Customer> customerListLimit = customerRepository.findAll(2, 12);
     customerListLimit.forEach(customer -> System.out.println(customer.getCustomerInformation()));
 
     /* 05. Insert a new customer.*/
-    customerRepository.insertCustomer(new Customer(0, "Adrian", "Mattsson", "Sweden", "54134", "824674-23423", "adrian@mattsson.com"));
+    customerRepository.insert(new Customer(0, "Adrian", "Mattsson", "Sweden", "54134", "824674-23423", "adrian@mattsson.com"));
 
     /* 06. Update an existing customer*/
-    customerRepository.updateCustomer(new Customer(2, "Oliver", "Dahlqvist", "Sweden", "54144", "224256-2343", "oliver@dalhqvist.com"));
+    customerRepository.update(new Customer(2, "Oliver", "Dahlqvist", "Sweden", "54144", "224256-2343", "oliver@dalhqvist.com"));
 
     /*07. Prints out country with most customers*/
     System.out.println("\n_______________________ Find country with most customers. _______________________");
@@ -60,7 +60,7 @@ public class CustomerRunner implements ApplicationRunner {
 
     /*09. Prints out the greatest genre for the specific customer.*/
     System.out.println("\n_______________________ Find customer greatest genre. _______________________");
-    List <CustomerGenre> genreList = customerRepository.customerGreatestGenre(customerRepository.findCustomerById(12));
+    List <CustomerGenre> genreList = customerRepository.customerGreatestGenre(customerRepository.findById(12));
     genreList.forEach(genre -> System.out.println(genre.findCustomersGreatestGenre()));
   }
 }

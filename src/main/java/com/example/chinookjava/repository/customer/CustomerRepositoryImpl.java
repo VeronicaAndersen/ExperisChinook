@@ -31,7 +31,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
   /* 1. Read all the customers in the database, this display their: Id, first name, last name, country, postal code,
   phone number and email.*/
   @Override
-  public List<Customer> findAllCustomers() {
+  public List<Customer> findAll() {
     Customer customer = null;
     List<Customer> customerList = new ArrayList<>();
     String sql = "SELECT * FROM customer ORDER BY customer_id ASC";
@@ -60,7 +60,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
   /* 4. Read all the customers in the database, this display their: Id, first name, last name, country, postal code,
 phone number and email. Whit limit & offsets*/
   @Override
-  public List<Customer> findAllCustomers(int rowLimit, int offsetLimit) {
+  public List<Customer> findAll(int rowLimit, int offsetLimit) {
     Customer customer = null;
     List<Customer> customerList = new ArrayList<>();
     String sql = "SELECT * FROM customer LIMIT ? OFFSET ?";
@@ -90,7 +90,7 @@ phone number and email. Whit limit & offsets*/
   /* 2. Read a specific customer from the database (by Id), this display their: Id, first name, last name, country, postal code,
   phone number and email.*/
   @Override
-  public Customer findCustomerById(Integer id) {
+  public Customer findById(Integer id) {
     Customer customer = null;
     String sql = "SELECT * FROM customer WHERE customer_id = ?";
     try (Connection conn = DriverManager.getConnection(url, username, password)) {
@@ -116,7 +116,7 @@ phone number and email. Whit limit & offsets*/
 
   /* 3. Read a specific customer by name.*/
   @Override
-  public List <Customer> findCustomerByName(String name) {
+  public List <Customer> findByName(String name) {
     Customer customer = null;
     List<Customer> customerList = new ArrayList<>();
     String sql = "SELECT * FROM customer WHERE first_name LIKE ? ORDER BY customer_id ASC";
@@ -144,7 +144,7 @@ phone number and email. Whit limit & offsets*/
 
   /* 5. Add a new customer to the database.*/
   @Override
-  public void insertCustomer(Customer customer) {
+  public void insert(Customer customer) {
     String sql = "INSERT INTO customer (first_name, last_name, country, postal_code, phone, email) VALUES (?,?,?,?,?,?)";
 
     try (Connection conn = DriverManager.getConnection(url, username, password)) {
@@ -163,7 +163,7 @@ phone number and email. Whit limit & offsets*/
 
   /* 6. Update an existing customer. */
   @Override
-  public int updateCustomer(Customer customer) {
+  public int update(Customer customer) {
     String sql = "UPDATE customer SET first_name = ?, " +
             "last_name = ?, " +
             "country = ?, " +
