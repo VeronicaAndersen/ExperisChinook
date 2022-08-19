@@ -143,14 +143,13 @@ phone number and email. Whit limit & offsets*/
   @Override
   public CustomerCountry countryWithMostCustomers() {
     CustomerCountry country = null;
-    String sql = "SELECT MAX(country) FROM customer";
-
+    String sql = "SELECT country FROM customer GROUP BY country ORDER BY COUNT(*) DESC LIMIT 1";
     try (Connection conn = DriverManager.getConnection(url, username, password)) {
       preparedStatement = conn.prepareStatement(sql);
       ResultSet resultSet = preparedStatement.executeQuery();
       while (resultSet.next()) {
         country = new CustomerCountry(
-                resultSet.getString("max"));
+                resultSet.getString("country"));
       }
       preparedStatement.close();
     } catch (SQLException e) {
